@@ -45,7 +45,7 @@ export const SalesLineChartCardMonthly:React.FC<LineChartCardProps> = ({ onRange
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/sales/total-sales/monthly`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/sales/total-sales/monthly`);
             const data = await response.json();
     
             const dataByYear = data.reduce((acc: any, item: any) => {
@@ -74,7 +74,7 @@ export const SalesLineChartCardMonthly:React.FC<LineChartCardProps> = ({ onRange
       const handleYearChange = (year: number) => {
         setSelectedYear(year);
     
-        fetch(`http://localhost:3001/api/sales/total-sales/monthly`)
+        fetch(`https://rapid-quest-backend.adaptable.app/api/sales/total-sales/monthly`)
           .then(response => response.json())
           .then(data => {
             const filteredData = data.filter((item: any) => item.year === year);
@@ -164,7 +164,7 @@ export const SalesLineChartCardYearly:React.FC<LineChartCardProps> = ({ onRangeC
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/sales/total-sales/yearly`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/sales/total-sales/yearly`);
             const data = await response.json();
             setChartData(data);
     
@@ -258,7 +258,7 @@ export const SalesLineChartCardDaily:React.FC<LineChartCardProps> = ({ onRangeCh
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/sales/total-sales/daily');
+            const response = await fetch('https://rapid-quest-backend.adaptable.app/api/sales/total-sales/daily');
             const data: DataItem[] = await response.json();
         
             const dataByYear = data.reduce((acc: { [key: number]: DataItem[] }, item: DataItem) => {
@@ -294,7 +294,7 @@ export const SalesLineChartCardDaily:React.FC<LineChartCardProps> = ({ onRangeCh
 
   useEffect(() => {
     if (selectedYear !== null && selectedMonth !== null) {
-      fetch(`http://localhost:3001/api/sales/total-sales/daily`)
+      fetch(`https://rapid-quest-backend.adaptable.app/api/sales/total-sales/daily`)
         .then(response => response.json())
         .then(data => {
           const filteredData = data.filter((item: DataItem) => item.year === selectedYear && monthNames[item.month - 1] === selectedMonth);

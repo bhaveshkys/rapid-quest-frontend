@@ -58,7 +58,7 @@ interface LineChartCardProps {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/customers/new-customers/daily');
+            const response = await fetch('https://rapid-quest-backend.adaptable.app/api/customers/new-customers/daily');
             const data: DataItem[] = await response.json();
         
             const dataByYear = data.reduce((acc: { [key: number]: DataItem[] }, item: DataItem) => {
@@ -94,7 +94,7 @@ interface LineChartCardProps {
 
   useEffect(() => {
     if (selectedYear !== null && selectedMonth !== null) {
-      fetch(`http://localhost:3001/api/customers/new-customers/daily`)
+      fetch(`https://rapid-quest-backend.adaptable.app/api/customers/new-customers/daily`)
         .then(response => response.json())
         .then(data => {
           const filteredData = data.filter((item: DataItem) => item.year === selectedYear && monthNames[item.month - 1] === selectedMonth);
@@ -220,7 +220,7 @@ export const NewCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ onRa
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/customers/new-customers/monthly`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/customers/new-customers/monthly`);
             const data = await response.json();
     
             const dataByYear = data.reduce((acc: any, item: any) => {
@@ -247,7 +247,7 @@ export const NewCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ onRa
       }, []);
       useEffect(() => {
         if (selectedYear !== null) {
-          fetch(`http://localhost:3001/api/customers/new-customers/monthly`)
+          fetch(`https://rapid-quest-backend.adaptable.app/api/customers/new-customers/monthly`)
             .then(response => response.json())
             .then(data => {
               const filteredData = data.filter((item: DataItem) => item.year === selectedYear);
@@ -321,7 +321,7 @@ export const NewCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ onRa
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/customers/new-customers/yearly`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/customers/new-customers/yearly`);
             const data = await response.json();
             setChartData(data);
     

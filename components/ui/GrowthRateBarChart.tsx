@@ -48,7 +48,7 @@ export function GrowthRateBarChart() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/sales/sales-growth-rate`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/sales/sales-growth-rate`);
             const data = await response.json();
     
             const dataByYear = data.reduce((acc: any, item: any) => {
@@ -77,7 +77,7 @@ export function GrowthRateBarChart() {
       const handleYearChange = (year: number) => {
         setSelectedYear(year);
     
-        fetch(`http://localhost:3001/api/sales/sales-growth-rate`)
+        fetch(`https://rapid-quest-backend.adaptable.app/api/sales/sales-growth-rate`)
           .then(response => response.json())
           .then(data => {
             const filteredData = data.filter((item: any) => item.year === year);

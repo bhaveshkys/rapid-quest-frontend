@@ -53,7 +53,7 @@ export function CLVBarChart() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/customers/customer-lifetime-value`);
+            const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/customers/customer-lifetime-value`);
             const data = await response.json();
     
             const dataByYear = data.reduce((acc: any, item: any) => {
@@ -82,7 +82,7 @@ export function CLVBarChart() {
       const handleYearChange = (year: number) => {
         setSelectedYear(year);
     
-        fetch(`http://localhost:3001/api/customers/customer-lifetime-value`)
+        fetch(`https://rapid-quest-backend.adaptable.app/api/customers/customer-lifetime-value`)
           .then(response => response.json())
           .then(data => {
             const filteredData = data.filter((item: any) => item.year === year);

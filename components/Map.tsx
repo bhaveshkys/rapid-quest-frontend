@@ -49,7 +49,7 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/customers/geographical-distribution`);
+        const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/customers/geographical-distribution`);
         const data = await response.json();
         SetCustomerData(data);
 

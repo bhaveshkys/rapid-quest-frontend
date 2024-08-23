@@ -11,7 +11,6 @@ import usStatesGeoJson from '../public/us-states.json'; // Ensure this file cont
 import customerData from "@/public/customerlocation.json"
 const MapComponent = () => {
     const [customerDataa,SetCustomerData]=useState<any[]>([])
-  // Function to get full state name from abbreviation
   const getStateFullName = (abbreviation: string ) => {
     const stateObj = stateMappings.find(state => state.abbreviation === abbreviation);
     return stateObj ? stateObj.state : null;
@@ -47,20 +46,7 @@ const MapComponent = () => {
     // Add a tooltip or popup
     layer.bindPopup(`${stateName}: ${count} customers`);
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://rapid-quest-backend.adaptable.app/api/customers/geographical-distribution`);
-        const data = await response.json();
-        SetCustomerData(data);
-
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  
   return (
     <MapContainer center={[37.8, -96]} zoom={4} style={{ height: "338px", width: "400px" }}>
       <TileLayer

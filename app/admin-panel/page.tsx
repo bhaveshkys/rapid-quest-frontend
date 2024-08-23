@@ -1,13 +1,12 @@
-'use client'
-import Map from '@/components/Map'
-import MapCard from '@/components/MapCard'
+
+
 import NewCustomerChartCard from '@/components/NewCustomersChartCard'
 import RepeatCustomerChartCard from '@/components/RepeatCustomersChartCard'
 import SaleChartCard from '@/components/SaleChartCard'
 import { CLVBarChart } from '@/components/ui/CLVBarChart'
 import { GrowthRateBarChart } from '@/components/ui/GrowthRateBarChart'
 import React from 'react'
-import { LineChart } from 'recharts'
+
 
 const page = () => {
   return (
@@ -28,7 +27,7 @@ const page = () => {
             <RepeatCustomerChartCard/>
         </div>
         <div className=''>
-            <MapCard/>
+            {/* <MapCard/> */}
         </div>
         <div className='w-[400px]'>
             <CLVBarChart/>

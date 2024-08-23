@@ -262,7 +262,7 @@ export const RepeatCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ o
     return (
       <Card>
         <CardHeader className="items-center pb-4">
-          <CardTitle className="text-3xl font-bold">New Customers Added</CardTitle>
+          <CardTitle className="text-3xl font-bold">Repeat Customers</CardTitle>
           <CardDescription>
             Showing New customers added for the {selectedYear}
           </CardDescription>
@@ -272,14 +272,14 @@ export const RepeatCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ o
                 <SelectValue placeholder="monthly" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="day">daily</SelectItem>
+                {/* <SelectItem value="day">daily</SelectItem> */}
                 <SelectItem value="month">monthly</SelectItem>
                 <SelectItem value="year">yearly</SelectItem>
             </SelectContent>
         </Select>
         <Select onValueChange={handleYearChange}>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="2021" />
+          <SelectValue placeholder="2023" />
         </SelectTrigger>
         <SelectContent>
           {availableYears.map(year => (
@@ -336,15 +336,15 @@ export const RepeatCustomersChartCardMonthly:React.FC<LineChartCardProps> = ({ o
   return (
     <Card className="w-fill-available">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">Growth Rate</CardTitle>
+        <CardTitle className="text-3xl font-bold">Repeat Customers</CardTitle>
         <div className="flex justify-start">
         {/* <CardDescription></CardDescription> */}
         <Select onValueChange={(value)=>onRangeChange(value as RangeOption)}>
             <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="monthly" />
+                <SelectValue placeholder="Yearly" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="day">daily</SelectItem>
+                {/* <SelectItem value="day">daily</SelectItem> */}
                 <SelectItem value="month">monthly</SelectItem>
                 <SelectItem value="year">yearly</SelectItem>
             </SelectContent>

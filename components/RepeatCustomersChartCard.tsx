@@ -19,17 +19,15 @@ import { RepeatCustomersChartCardDaily, RepeatCustomersChartCardMonthly,RepeatCu
   type RangeOption = "day" | "month" | "year";
 
 const RepeatCustomerChartCard = () => {
-    const[range,setRange]= useState<RangeOption>('day');
+    const[range,setRange]= useState<RangeOption>('month');
     const handleSelectChange = (value: RangeOption) => {
         setRange(value);
       };
   return (
-    <div className='w-[520px]'>
+    <div className='w-[400px]'>
        
         
-        {range ==="day" && (
-            <RepeatCustomersChartCardDaily onRangeChange={handleSelectChange} />
-        )}
+        
         {range ==="month" && (
             <RepeatCustomersChartCardMonthly onRangeChange={handleSelectChange} />
         )}

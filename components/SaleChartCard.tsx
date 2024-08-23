@@ -24,7 +24,7 @@ const SaleChartCard = () => {
         setRange(value);
       };
   return (
-    <div className='w-[520px]'>
+    <div className='w-[400px]'>
         
         
         {range ==="day" && (

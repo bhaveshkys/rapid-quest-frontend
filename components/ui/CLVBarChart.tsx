@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, Cell, LabelList, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Cell, LabelList, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -35,20 +35,25 @@ const chartData = [
 ]
 
 const chartConfig = {
-    growthRate: {
-    label: "growthRate",
+    totalRevenue: {
+    label: "totalRevenue",
+  },
+  customerCount: {
+    label: "customerCount",
+    color: "blue",
   },
 } satisfies ChartConfig
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export function GrowthRateBarChart() {
+export function CLVBarChart() {
     const [chartData, setChartData] = useState<any[]>([]);
     const [availableYears, setAvailableYears] = useState<number[]>([]);
     const [selectedYear, setSelectedYear] = useState<number | null>(null);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:3001/api/sales/sales-growth-rate`);
+            const response = await fetch(`http://localhost:3001/api/customers/customer-lifetime-value`);
             const data = await response.json();
     
             const dataByYear = data.reduce((acc: any, item: any) => {
@@ -77,7 +82,7 @@ export function GrowthRateBarChart() {
       const handleYearChange = (year: number) => {
         setSelectedYear(year);
     
-        fetch(`http://localhost:3001/api/sales/sales-growth-rate`)
+        fetch(`http://localhost:3001/api/customers/customer-lifetime-value`)
           .then(response => response.json())
           .then(data => {
             const filteredData = data.filter((item: any) => item.year === year);
@@ -88,7 +93,7 @@ export function GrowthRateBarChart() {
   return (
     <Card className="w-fill-available h-[394px]">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">Growth Rate</CardTitle>
+        <CardTitle className="text-3xl font-bold">Customer Lifetime Value</CardTitle>
         <div className="flex justify-between">
         <CardDescription>For the Year {selectedYear}</CardDescription>
         <Select onValueChange={(value) => handleYearChange(Number(value))}>
@@ -114,15 +119,30 @@ export function GrowthRateBarChart() {
               content={<ChartTooltipContent hideLabel hideIndicator />}
             />
             <XAxis tickMargin={10}  axisLine={false} tickLine={false} tickFormatter={(value) => monthNames[value]}/>
-            <Bar dataKey="growthRate">
-              <LabelList position="top" dataKey="month" fillOpacity={1} />
+            <YAxis tickMargin={10}  axisLine={false} tickLine={false} />
+
+            <Bar dataKey="totalRevenue" stackId="a">
+              {/* <LabelList position="top" dataKey="month" fillOpacity={1} /> */}
               {chartData.map((item) => (
                 <Cell
                   key={item.month}
                   fill={
-                    item.growthRate > 0
-                      ? "hsl(var(--chart-1))"
-                      : "hsl(var(--chart-2))"
+                    item.totalRevenue > 0
+                      ? "red"
+                      : "red"
+                  }
+                />
+              ))}
+            </Bar>
+            <Bar dataKey="customerCount" stackId="a">
+              <LabelList position="top" dataKey="customerCount" fillOpacity={1} />
+              {chartData.map((item) => (
+                <Cell
+                  key={item.month}
+                  fill={
+                    item.customerCount > 0
+                      ? "blue"
+                      : "blue"
                   }
                 />
               ))}

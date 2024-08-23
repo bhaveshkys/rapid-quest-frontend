@@ -15,7 +15,7 @@ const MapComponent = () => {
     const stateObj = stateMappings.find(state => state.abbreviation === abbreviation);
     return stateObj ? stateObj.state : null;
   };
-
+  
   // Function to style each state based on customer count
   const getStateStyle = (stateName:string) => {
     const stateData = customerData.find(data => getStateFullName(data.state) === stateName);

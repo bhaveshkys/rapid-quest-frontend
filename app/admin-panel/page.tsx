@@ -1,4 +1,5 @@
 
+import dynamic from 'next/dynamic';
 
 import NewCustomerChartCard from '@/components/NewCustomersChartCard'
 import RepeatCustomerChartCard from '@/components/RepeatCustomersChartCard'
@@ -7,7 +8,9 @@ import { CLVBarChart } from '@/components/ui/CLVBarChart'
 import { GrowthRateBarChart } from '@/components/ui/GrowthRateBarChart'
 import React from 'react'
 
-
+const MapCard = dynamic(() => import('@/components/MapCard'), {
+    ssr: false
+  });
 const page = () => {
   return (
     <div className=' h-screen  '>
@@ -27,7 +30,7 @@ const page = () => {
             <RepeatCustomerChartCard/>
         </div>
         <div className=''>
-            {/* <MapCard/> */}
+            <MapCard/>
         </div>
         <div className='w-[400px]'>
             <CLVBarChart/>

@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, Cell, LabelList } from "recharts"
+import { Bar, BarChart, CartesianGrid, Cell, LabelList, XAxis } from "recharts"
 
 import {
   Card,
@@ -88,7 +88,8 @@ export function GrowthRateBarChart() {
     <Card className="w-fill-available">
       <CardHeader>
         <CardTitle className="text-3xl font-bold">Growth Rate</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <div className="flex justify-between">
+        <CardDescription>For the Year {selectedYear}</CardDescription>
         <Select onValueChange={(value) => handleYearChange(Number(value))}>
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="2023" />
@@ -101,6 +102,7 @@ export function GrowthRateBarChart() {
     ))}
   </SelectContent>
 </Select>
+</div>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -110,6 +112,7 @@ export function GrowthRateBarChart() {
               cursor={false}
               content={<ChartTooltipContent hideLabel hideIndicator />}
             />
+            <XAxis tickMargin={10}  axisLine={false} tickLine={false}/>
             <Bar dataKey="growthRate">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (

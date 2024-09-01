@@ -1,4 +1,5 @@
 # Demo Link - https://rapid-quest-frontend-green.vercel.app/
+## give it a few reloads as the server on which is hosted on is a little finicky
 
 ## Getting Started
 
